@@ -47,7 +47,7 @@ declare module "react-native-aws-cognito-js" {
     }
 
     export class CognitoUserAttribute {
-        constructor(Name: string, Value: string);
+        constructor({ Name: string, Value: string } = {});
         public getValue(): string;
         public getName(): string;
     }
