@@ -21,13 +21,14 @@
   "author": "Jon Parsons <jonparsons@gmail.com> (https://github.com/jmparsons)",
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
-    "aws-sdk": "*"
+    "aws-sdk": "2.177.0"
   },
   "peerDependencies": {
+    "@react-native-community/async-storage": ">=1.7.1",
     "react-native": ">=0.61.5",
-    "@react-native-community/async-storage": ">=1.7.1"
+    "aws-sdk": "2.177.0"
   },
   "devDependencies": {
-      "@react-native-community/async-storage": "^1.7.1"
+    "@react-native-community/async-storage": "^1.7.1"
   }
 }
