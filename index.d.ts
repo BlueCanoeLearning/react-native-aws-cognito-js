@@ -45,6 +45,7 @@ declare module "react-native-aws-cognito-js" {
         public updateAttributes(attributes: CognitoUserAttribute[], callback: (error?: Error) => void): void;
         public getSession(callback: (error: Error, session: CognitoUserSession) => void): void;
         public changePassword(oldUserPassword: string, newUserPassword: string, callback: (error: Error | null, result: 'SUCCESS' | null) => void): void;
+        public completeNewPasswordChallenge(newPassword: string, attributes: CognitoUserAttribute[], callback: CognitoLoginCallback): void;
     }
 
     export class CognitoUserAttribute {
