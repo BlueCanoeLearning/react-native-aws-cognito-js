@@ -44,10 +44,11 @@ declare module "react-native-aws-cognito-js" {
         public getUserAttributes(callback: (error: Error, attributes: CognitoUserAttribute[]) => void): void;
         public updateAttributes(attributes: CognitoUserAttribute[], callback: (error?: Error) => void): void;
         public getSession(callback: (error: Error, session: CognitoUserSession) => void): void;
+        public changePassword(oldUserPassword: string, newUserPassword: string, callback: (error: Error | null, result: 'SUCCESS' | null) => void): void;
     }
 
     export class CognitoUserAttribute {
-        constructor({ Name: string, Value: string } = {});
+        constructor(attr?: { Name: string, Value: string });
         public getValue(): string;
         public getName(): string;
     }
