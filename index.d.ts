@@ -22,7 +22,17 @@ declare module "react-native-aws-cognito-js" {
         customChallenge: any;
     }
     export class AuthenticationDetails {
-        constructor(data: any);
+        constructor(data: { 
+            Username: string,
+            Password: string,
+            ValidationData?: Array<{ [key: string]: any }>,
+            AuthParameters?: Array<{ [key: string]: any }>
+        });
+
+        public getUsername(): string;
+        public getPassword(): string;
+        public getValidationData(): Array<{ [key: string]: any }>;
+        public getAuthParameters(): Array<{ [key: string]: any }>;
     }
 
     export class CognitoUser {
@@ -40,7 +50,7 @@ declare module "react-native-aws-cognito-js" {
         public resendConfirmationCode(callback: (error: Error) => void): void;
         public setDeviceStatusRemembered(handlers: { onSuccess: (successMessage: string) => void, onFailure: (error: Error) => void }): void;
         public getDevice(handlers: { onSuccess: (data: any) => void, onFailure: (error: Error) => void }): void;
-        public refreshSession(refreshToken: CognitoRefreshToken, callback: (error: any, session: CognitoUserSession) => void): void;
+        public refreshSession(refreshToken: CognitoRefreshToken, clientMetadata: Array<{ [key: string]: any }>, callback: (error: any, session: CognitoUserSession) => void): void;
         public getUserAttributes(callback: (error: Error, attributes: CognitoUserAttribute[]) => void): void;
         public updateAttributes(attributes: CognitoUserAttribute[], callback: (error?: Error) => void): void;
         public getSession(callback: (error: Error, session: CognitoUserSession) => void): void;

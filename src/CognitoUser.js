@@ -914,7 +914,7 @@ export default class CognitoUser {
         return callback(new Error('Cannot retrieve a new session. Please authenticate.'), null);
       }
 
-      this.refreshSession(refreshToken, callback);
+      this.refreshSession(refreshToken, [], callback);
     } else {
       callback(new Error('Local storage is missing an ID Token, Please authenticate'), null);
     }
@@ -929,7 +929,7 @@ export default class CognitoUser {
    * @param {nodeCallback<CognitoUserSession>} callback Called on success or error.
    * @returns {void}
    */
-  refreshSession(refreshToken, callback) {
+  refreshSession(refreshToken, clientMetadata, callback) {
     const authParameters = {};
     authParameters.REFRESH_TOKEN = refreshToken.getToken();
     const keyPrefix = `CognitoIdentityServiceProvider.${this.pool.getClientId()}`;
@@ -946,6 +946,7 @@ export default class CognitoUser {
       ClientId: this.pool.getClientId(),
       AuthFlow: 'REFRESH_TOKEN_AUTH',
       AuthParameters: authParameters,
+      ClientMetadata: clientMetadata || []
     }, (err, authResult) => {
       if (err) {
         if (err.code === 'NotAuthorizedException') {
