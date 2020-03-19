@@ -141,7 +141,7 @@ export default class CognitoUser {
       AuthFlow: 'CUSTOM_AUTH',
       ClientId: this.pool.getClientId(),
       AuthParameters: authParameters,
-      ClientMetadata: authDetails.getValidationData(),
+      ClientMetadata: authDetails.getClientMetadata(),
     }, (err, data) => {
       if (err) {
         return callback.onFailure(err);
@@ -200,7 +200,7 @@ export default class CognitoUser {
         AuthFlow: this.authenticationFlowType,
         ClientId: this.pool.getClientId(),
         AuthParameters: authParameters,
-        ClientMetadata: authDetails.getValidationData(),
+        ClientMetadata: authDetails.getClientMetadata(),
       }, (err, data) => {
         if (err) {
           return callback.onFailure(err);
@@ -946,7 +946,7 @@ export default class CognitoUser {
       ClientId: this.pool.getClientId(),
       AuthFlow: 'REFRESH_TOKEN_AUTH',
       AuthParameters: authParameters,
-      ClientMetadata: clientMetadata || []
+      ClientMetadata: clientMetadata || {}
     }, (err, authResult) => {
       if (err) {
         if (err.code === 'NotAuthorizedException') {
