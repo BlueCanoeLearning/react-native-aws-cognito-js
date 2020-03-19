@@ -25,14 +25,14 @@ declare module "react-native-aws-cognito-js" {
         constructor(data: { 
             Username: string,
             Password: string,
-            ValidationData?: Array<{ [key: string]: any }>,
-            AuthParameters?: Array<{ [key: string]: any }>
+            ValidationData?: any[],
+            AuthParameters?: any[]
         });
 
         public getUsername(): string;
         public getPassword(): string;
-        public getValidationData(): Array<{ [key: string]: any }>;
-        public getAuthParameters(): Array<{ [key: string]: any }>;
+        public getValidationData(): any[];
+        public getAuthParameters(): any[];
     }
 
     export class CognitoUser {
